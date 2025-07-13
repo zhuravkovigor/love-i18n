@@ -30,10 +30,6 @@ upload-luarocks:
 		luarocks upload love-i18n-1.0-1.rockspec; \
 	fi
 
-# Pack for LuaRocks
-pack:
-	@echo "Creating LuaRocks package..."
-	@luarocks pack love-i18n-1.0-1.rockspec
 
 # Remove LuaRocks installation
 uninstall:
