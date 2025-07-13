@@ -30,7 +30,6 @@ upload-luarocks:
 		luarocks upload love-i18n-1.0-1.rockspec; \
 	fi
 
-
 # Remove LuaRocks installation
 uninstall:
 	@echo "Uninstalling love-i18n..."
