@@ -16,12 +16,19 @@ install:
 	@luarocks make love-i18n-1.0-1.rockspec
 
 # Upload to LuaRocks repository
+# Usage: make upload-luarocks API_KEY=your_api_key_here
 upload-luarocks:
 	@echo "Uploading to LuaRocks..."
 	@command -v luarocks >/dev/null 2>&1 || { echo "luarocks not found"; exit 1; }
 	@test -f love-i18n-1.0-1.rockspec || { echo "Rockspec not found"; exit 1; }
-	@echo "Please make sure you are logged in to LuaRocks (luarocks login)"
-	@luarocks upload love-i18n-1.0-1.rockspec
+	@if [ -n "$(API_KEY)" ]; then \
+		echo "Using provided API key..."; \
+		luarocks upload love-i18n-1.0-1.rockspec --api-key=$(API_KEY); \
+	else \
+		echo "No API key provided. Please use: make upload-luarocks API_KEY=your_key"; \
+		echo "Or ensure you are logged in to LuaRocks (luarocks login)"; \
+		luarocks upload love-i18n-1.0-1.rockspec; \
+	fi
 
 # Pack for LuaRocks
 pack:
@@ -96,7 +103,7 @@ version-patch:
 	@echo "Update version in love-i18n-1.0-1.rockspec manually"
 
 version-minor:
-	@echo "This would bump minor version (1.1.0)"  
+	@echo "This would bump minor version (1.1.0)"
 	@echo "Update version in love-i18n-1.0-1.rockspec manually"
 
 version-major:
@@ -111,6 +118,7 @@ help:
 	@echo "  uninstall         - Remove LuaRocks installation"
 	@echo "  pack              - Create LuaRocks package"
 	@echo "  upload-luarocks   - Upload to LuaRocks repository"
+	@echo "                      Usage: make upload-luarocks API_KEY=your_key"
 	@echo "  clean             - Clean up generated files"
 	@echo "  lint              - Lint Lua files (requires luacheck)"
 	@echo "  format            - Format Lua files (requires stylua)"
@@ -126,4 +134,4 @@ help:
 	@echo "  2. make test      # Run tests during development"
 	@echo "  3. make ci        # Full CI check before commit"
 	@echo "  4. make pack      # Create LuaRocks package"
-	@echo "  5. make upload-luarocks # Upload to LuaRocks"
+	@echo "  5. make upload-luarocks API_KEY=your_key # Upload to LuaRocks"
