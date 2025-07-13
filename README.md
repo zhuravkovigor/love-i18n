@@ -18,7 +18,7 @@ A small, lightweight internationalization (i18n) library written in Lua, designe
 ### Option 1: LuaRocks
 
 ```bash
-luarocks install love-i18n
+luarocks install --local love-i18n
 ```
 
 ### Option 2: Git Clone
