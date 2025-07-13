@@ -49,13 +49,13 @@ i18n.configure({
 i18n.load()
 
 -- Use translations
-print(i18n.t("welcome"))                    -- "Welcome to our game!"
-print(i18n.t("menu.title"))                 -- "Main Menu"
+print(i18n.t("welcome"))                     -- "Welcome to our game!"
+print(i18n.t("menu.title"))                  -- "Main Menu"
 print(i18n.t("game.score", { score = 100 })) -- "Score: 100"
 
 -- Switch language
 i18n.setLocale("es")
-print(i18n.t("welcome"))                    -- "¡Bienvenido a nuestro juego!"
+print(i18n.t("welcome"))                     -- "¡Bienvenido a nuestro juego!"
 ```
 
 ## Translation Files
