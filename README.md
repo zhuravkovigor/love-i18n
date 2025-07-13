@@ -86,26 +86,26 @@ return {
 }
 ```
 
-**translations/ru.lua**
+**translations/es.lua**
 
 ```lua
 return {
-  welcome = "Добро пожаловать в нашу игру!",
-  goodbye = "До свидания!",
+  welcome = "¡Bienvenido a nuestro juego!",
+  goodbye = "¡Adiós!",
 
   menu = {
-    title = "Главное меню",
+    title = "Menú Principal",
     items = {
-      play = "Играть",
-      settings = "Настройки",
-      exit = "Выход"
+      play = "Jugar",
+      settings = "Configuración",
+      exit = "Salir"
     }
   },
 
   game = {
-    score = "Счёт: {score}",
-    level = "Уровень {level}",
-    lives = "Жизни: {lives}"
+    score = "Puntuación: {score}",
+    level = "Nivel {level}",
+    lives = "Vidas: {lives}"
   }
 }
 ```
@@ -162,7 +162,7 @@ Translate a key with optional parameters and locale override.
 i18n.t("welcome")                           -- Basic translation
 i18n.t("menu.items.play")                   -- Nested key
 i18n.t("game.score", { score = 1500 })      -- With interpolation
-i18n.t("welcome", nil, "ru")                -- Force specific locale
+i18n.t("welcome", nil, "es")                -- Force specific locale
 ```
 
 ### Locale Management
@@ -221,7 +221,7 @@ function love.keypressed(key)
   if key == "l" then
     -- Switch language with 'L' key
     local current = i18n.getLocale()
-    i18n.setLocale(current == "en" and "ru" or "en")
+    i18n.setLocale(current == "en" and "es" or "en")
   end
 end
 ```
