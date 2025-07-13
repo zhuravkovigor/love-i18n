@@ -1,7 +1,7 @@
 package = "love-i18n"
 version = "1.0-1"
 source = {
-   url = "git+https://github.com/yourusername/love-i18n.git",
+   url = "git+https://github.com/zhuravkovigor/love-i18n.git",
    tag = "v1.0"
 }
 description = {
@@ -55,7 +55,7 @@ description = {
 
       Perfect for Love2D games with multilingual support!
    ]],
-   homepage = "https://github.com/yourusername/love-i18n",
+   homepage = "https://github.com/zhuravkovigor/love-i18n",
    license = "MIT"
 }
 dependencies = {
@@ -67,20 +67,6 @@ build = {
       ["love-i18n"] = "init.lua"
    },
    copy_directories = {
-      "examples",
       "translations"
-   },
-   install = {
-      lua = {
-         ["love-i18n"] = "init.lua"
-      },
-      bin = {},
-      conf = {},
-      doc = {
-         "README.md",
-         "USAGE_EXAMPLES.md",
-         "CHANGELOG.md",
-         "LICENSE"
-      }
    }
 }
