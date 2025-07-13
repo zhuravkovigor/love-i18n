@@ -1,0 +1,26 @@
+{
+  "lua.workspace.library": ["${3rd}/love2d/library"],
+  "lua.diagnostics.globals": ["love"],
+  "lua.runtime.version": "Lua 5.1",
+  "lua.workspace.checkThirdParty": false,
+  "files.associations": {
+    "*.lua": "lua"
+  },
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "luacheck.enable": true,
+  "luacheck.executablePath": "luacheck",
+  "luacheck.configFilePath": ".luacheckrc",
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "files.exclude": {
+    "**/docs/**": true,
+    "**/dist/**": true,
+    "**/*.rock": true,
+    "**/luacov.*.out": true
+  }
+}

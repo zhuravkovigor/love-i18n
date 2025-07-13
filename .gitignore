@@ -1,0 +1,44 @@
+# Generated documentation
+docs
+
+# Distribution files
+dist/
+*.rock
+*.tar.gz
+
+# LuaRocks build files
+.luarocks/
+
+# Test coverage files
+luacov.stats.out
+luacov.report.out
+
+# Temporary files
+*.tmp
+*~
+.DS_Store
+
+# IDE files (optional - uncomment if you want to ignore personal VS Code settings)
+# .vscode/settings.json
+# .vscode/launch.json
+
+# Love2D build files (if using Love2D)
+*.love
+
+# Log files
+*.log
+
+# OS specific files
+Thumbs.db
+.directory
+
+# Backup files
+*.bak
+*.orig
+
+# Node modules (if using any Node.js tools)
+node_modules/
+
+# Environment files
+.env
+.env.local

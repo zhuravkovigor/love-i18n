@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "sumneko.lua",
+    "johnnymorganz.stylua",
+    "dwenegar.vscode-luacheck",
+    "trixnz.vscode-lua",
+    "ms-vscode.vscode-json"
+  ]
+}
