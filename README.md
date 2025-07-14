@@ -1,6 +1,6 @@
 # love-i18n
 
-A small, lightweight internationalization (i18n) library written in Lua, designed for easy integration with Love2D games and compatible with LuaRocks.
+love-i18n is a powerful and fully-featured internationalization (i18n) library designed specifically for Love2D games, while also remaining compatible with general Lua projects.
 
 ## Features
 
