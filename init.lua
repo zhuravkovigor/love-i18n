@@ -12,12 +12,12 @@ local i18n = {}
 
 --- Default configuration table
 -- @table config
--- @field translationsDir Directory containing translation files (default: "translations")
+-- @field localesDir Directory containing translation files (default: "locales")
 -- @field fallbackLocale Fallback language when translation not found (default: "en")
 -- @field currentLocale Current active language (default: "en")
 -- @field interpolationPattern Pattern for placeholder interpolation (default: "{([^}]+)}")
 local config = {
-	translationsDir = "translations",
+	localesDir = "locales",
 	fallbackLocale = "en",
 	currentLocale = "en",
 	interpolationPattern = "{([^}]+)}",
@@ -184,10 +184,10 @@ end
 -- Public API
 
 --- Configure the i18n library
---- @param options table Configuration options with fields: translationsDir, fallbackLocale, currentLocale, interpolationPattern
+--- @param options table Configuration options with fields: localesDir, fallbackLocale, currentLocale, interpolationPattern
 function i18n.configure(options)
-	if options.translationsDir then
-		config.translationsDir = options.translationsDir
+	if options.localesDir then
+		config.localesDir = options.localesDir
 	end
 	if options.fallbackLocale then
 		config.fallbackLocale = options.fallbackLocale
@@ -204,17 +204,17 @@ end
 function i18n.load()
 	translations = {}
 
-	if not fileExists(config.translationsDir) then
-		print("Warning: Translations directory '" .. config.translationsDir .. "' not found")
+	if not fileExists(config.localesDir) then
+		print("Warning: Translations directory '" .. config.localesDir .. "' not found")
 		return
 	end
 
-	local files = getFilesInDirectory(config.translationsDir)
+	local files = getFilesInDirectory(config.localesDir)
 
 	for _, filename in ipairs(files) do
 		if filename:match("%.lua$") then
 			local locale = filename:match("^(.+)%.lua$")
-			local filepath = config.translationsDir .. "/" .. filename
+			local filepath = config.localesDir .. "/" .. filename
 
 			local translationData = loadTranslationFile(locale, filepath)
 			if translationData then

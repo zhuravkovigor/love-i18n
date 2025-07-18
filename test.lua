@@ -7,7 +7,7 @@ local function test_configuration()
 	print("Testing configuration...")
 
 	i18n.configure({
-		translationsDir = "translations",
+		localesDir = "locales",
 		fallbackLocale = "en",
 		currentLocale = "es",
 	})

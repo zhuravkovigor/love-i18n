@@ -40,7 +40,7 @@ local i18n = require("love-i18n") -- or require("init") for manual installation
 
 -- Configure (optional - these are defaults)
 i18n.configure({
-  translationsDir = "translations",
+  localesDir = "locales",
   fallbackLocale = "en",
   currentLocale = "en"
 })
@@ -120,7 +120,7 @@ Configure the library settings.
 
 ```lua
 i18n.configure({
-  translationsDir = "translations",     -- Directory containing translation files
+  localesDir = "locales",     -- Directory containing translation files
   fallbackLocale = "en",               -- Fallback language when translation not found
   currentLocale = "en",                -- Current active language
   interpolationPattern = "{([^}]+)}"   -- Pattern for placeholder interpolation
