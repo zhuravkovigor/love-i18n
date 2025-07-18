@@ -8,14 +8,40 @@
 --- - Interpolation support with placeholders
 --- - Love2D integration
 
+--- @class I18n
+--- @field configure fun(options: I18nConfigureOptions): nil Configure the i18n library
+--- @field load fun(): nil Load all translation files from the translations directory
+--- @field loadFile fun(locale: string, filepath: string): boolean Load specific translation file
+--- @field set fun(locale: string, data: table<string, any>): nil Set translation data directly
+--- @field add fun(locale: string, key: string, value: string|table<string, any>): nil Add translation key-value pair
+--- @field getLocale fun(): string Get current locale
+--- @field setLocale fun(locale: string): nil Set current locale
+--- @field getFallbackLocale fun(): string Get fallback locale
+--- @field setFallbackLocale fun(locale: string): nil Set fallback locale
+--- @field t fun(key: string, params: table<string, any>?, locale: string?): string Translate a key
+--- @field translate fun(key: string, params: table<string, any>?, locale: string?): string Alias for t function
+--- @field localeExists fun(locale: string): boolean Check if locale exists
+--- @field getLocales fun(): string[] Get list of available locales
+--- @field getTranslations fun(locale: string?): table<string, any>? Get all translations for a locale
 local i18n = {}
 
+--- @class I18nConfig
+--- @field localesDir string Directory containing translation files (default: "locales")
+--- @field fallbackLocale string Fallback language when translation not found (default: "en")
+--- @field currentLocale string Current active language (default: "en")
+--- @field interpolationPattern string Pattern for placeholder interpolation (default: "{([^}]+)}")
+
+--- @class I18nConfigureOptions
+--- @field localesDir string? Directory containing translation files (e.g., "locales", "translations")
+--- @field fallbackLocale string? Language code to use when translation is not found in current locale (e.g., "en", "ru")
+--- @field currentLocale string? Currently active language code (e.g., "en", "es", "fr", "ru")
+--- @field interpolationPattern string? Regex pattern for finding placeholders in translation strings (default: "{([^}]+)}")
+
+--- @class I18nTranslations
+--- @field [string] table<string, any> Translations data for each locale
+
 --- Default configuration table
--- @table config
--- @field localesDir Directory containing translation files (default: "locales")
--- @field fallbackLocale Fallback language when translation not found (default: "en")
--- @field currentLocale Current active language (default: "en")
--- @field interpolationPattern Pattern for placeholder interpolation (default: "{([^}]+)}")
+--- @type I18nConfig
 local config = {
 	localesDir = "locales",
 	fallbackLocale = "en",
@@ -24,7 +50,7 @@ local config = {
 }
 
 --- Storage for all translations
--- @table translations
+--- @type I18nTranslations
 local translations = {}
 
 --- Helper function to check if a file exists
@@ -45,7 +71,7 @@ end
 
 --- Helper function to read file content
 --- @param path string File path to read
---- @return string|nil content File content or nil if failed
+--- @return string? content File content or nil if failed
 local function readFile(path)
 	if love and love.filesystem then
 		if love.filesystem.getInfo(path) then
@@ -96,7 +122,7 @@ end
 --- Load translation file
 --- @param _locale string Locale identifier (unused but kept for API consistency)
 --- @param filepath string Path to translation file
---- @return table|nil translations Loaded translation data or nil if failed
+--- @return table<string, any>? translations Loaded translation data or nil if failed
 local function loadTranslationFile(_locale, filepath)
 	local content = readFile(filepath)
 	if not content then
@@ -123,9 +149,9 @@ local function loadTranslationFile(_locale, filepath)
 end
 
 --- Get nested value from table using dot notation
---- @param t table Table to search in
+--- @param t table<string, any> Table to search in
 --- @param key string Dot-separated key (e.g., "menu.items.play")
---- @return any|nil value Found value or nil
+--- @return any? value Found value or nil
 local function getNestedValue(t, key)
 	local keys = {}
 	for k in string.gmatch(key, "[^%.]+") do
@@ -145,7 +171,7 @@ local function getNestedValue(t, key)
 end
 
 --- Set nested value in table using dot notation
---- @param t table Table to modify
+--- @param t table<string, any> Table to modify
 --- @param key string Dot-separated key (e.g., "menu.items.play")
 --- @param value any Value to set
 local function setNestedValue(t, key, value)
@@ -168,7 +194,7 @@ end
 
 --- Interpolate placeholders in string
 --- @param str string String with placeholders
---- @param params table<string, any>|nil Parameters for interpolation
+--- @param params table<string, any>? Parameters for interpolation
 --- @return string result Interpolated string
 local function interpolate(str, params)
 	if not params then
@@ -184,11 +210,7 @@ end
 -- Public API
 
 --- Configure the i18n library
---- @param options {localesDir: string?, fallbackLocale: string?, currentLocale: string?, interpolationPattern: string?} Configuration options table with following optional fields:
----   • localesDir (string): Directory containing translation files (default: "locales")
----   • fallbackLocale (string): Fallback language when translation not found (default: "en")
----   • currentLocale (string): Current active language (default: "en")
----   • interpolationPattern (string): Pattern for placeholder interpolation (default: "{([^}]+)}")
+--- @param options I18nConfigureOptions Configuration options table
 function i18n.configure(options)
 	if options.localesDir then
 		-- Directory containing translation files (e.g., "locales", "translations")
@@ -208,7 +230,7 @@ function i18n.configure(options)
 	end
 end
 
----Load all translation files from the translations directory
+--- Load all translation files from the translations directory
 function i18n.load()
 	translations = {}
 
@@ -248,7 +270,7 @@ end
 
 --- Set translation data directly
 --- @param locale string Locale identifier
---- @param data table Translation data
+--- @param data table<string, any> Translation data
 function i18n.set(locale, data)
 	translations[locale] = data
 end
@@ -256,7 +278,7 @@ end
 --- Add translation key-value pair
 --- @param locale string Locale identifier
 --- @param key string Translation key (supports dot notation)
---- @param value string|table Translation value
+--- @param value string|table<string, any> Translation value
 function i18n.add(locale, key, value)
 	if not translations[locale] then
 		translations[locale] = {}
@@ -290,9 +312,9 @@ end
 
 --- Translate a key
 --- @param key string Translation key (supports dot notation)
---- @param params table<string, any>|nil Parameters for interpolation
---- @param locale string|nil Locale override (uses current locale if not specified)
----@return string translation Translated string or key if translation not found
+--- @param params table<string, any>? Parameters for interpolation
+--- @param locale string? Locale override (uses current locale if not specified)
+--- @return string translation Translated string or key if translation not found
 function i18n.t(key, params, locale)
 	local targetLocale = locale or config.currentLocale
 
@@ -344,8 +366,8 @@ function i18n.getLocales()
 end
 
 --- Get all translations for a locale
---- @param locale string|nil Locale identifier (uses current locale if not specified)
---- @return table|nil translations Translation data for the locale
+--- @param locale string? Locale identifier (uses current locale if not specified)
+--- @return table<string, any>? translations Translation data for the locale
 function i18n.getTranslations(locale)
 	return translations[locale or config.currentLocale]
 end
@@ -353,4 +375,5 @@ end
 -- Initialize with default configuration
 i18n.load()
 
+--- @type I18n
 return i18n
