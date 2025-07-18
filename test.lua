@@ -88,7 +88,10 @@ local function test_language_switching()
 	local welcomeEs = i18n.t("welcome")
 
 	assert(welcomeEn ~= welcomeEs, "Language switching failed - same text returned")
-	assert(welcomeEs == "¡Bienvenido a nuestro juego!", "Spanish translation incorrect: " .. welcomeEs)
+	assert(
+	welcomeEs == "¡Bienvenido a nuestro juego!",
+		"Spanish translation incorrect: " .. welcomeEs
+	)
 
 	print("✓ Language switching tests passed")
 end
