@@ -184,18 +184,26 @@ end
 -- Public API
 
 --- Configure the i18n library
---- @param options table Configuration options with fields: localesDir, fallbackLocale, currentLocale, interpolationPattern
+--- @param options table Configuration options table with following optional fields:
+---   • localesDir (string): Directory containing translation files (default: "locales")
+---   • fallbackLocale (string): Fallback language when translation not found (default: "en")
+---   • currentLocale (string): Current active language (default: "en")
+---   • interpolationPattern (string): Pattern for placeholder interpolation (default: "{([^}]+)}")
 function i18n.configure(options)
 	if options.localesDir then
+		-- Directory containing translation files (e.g., "locales", "translations")
 		config.localesDir = options.localesDir
 	end
 	if options.fallbackLocale then
+		-- Language code to use when translation is not found in current locale (e.g., "en", "ru")
 		config.fallbackLocale = options.fallbackLocale
 	end
 	if options.currentLocale then
+		-- Currently active language code (e.g., "en", "es", "fr", "ru")
 		config.currentLocale = options.currentLocale
 	end
 	if options.interpolationPattern then
+		-- Regex pattern for finding placeholders in translation strings (default: "{([^}]+)}")
 		config.interpolationPattern = options.interpolationPattern
 	end
 end
