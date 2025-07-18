@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_I18nTranslations">Class I18nTranslations </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>init</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>init</code></h1>
+<p>love-i18n - A small internationalization library for Love2D</p>
+<p> Features:
+ - Automatic loading of translation files
+ - Support for nested keys (e.g., "menu.items.play")
+ - Configurable translation directory
+ - Fallback language support
+ - Interpolation support with placeholders
+ - Love2D integration</p>
+
+
+<h2><a href="#Class_I18nTranslations">Class I18nTranslations </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#i18n.configure">i18n.configure (options)</a></td>
+	<td class="summary">Configure the i18n library</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.load">i18n.load ()</a></td>
+	<td class="summary">Load all translation files from the translations directory</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.loadFile">i18n.loadFile (locale, filepath)</a></td>
+	<td class="summary">Load specific translation file</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.set">i18n.set (locale, data)</a></td>
+	<td class="summary">Set translation data directly</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.add">i18n.add (locale, key, value)</a></td>
+	<td class="summary">Add translation key-value pair</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.getLocale">i18n.getLocale ()</a></td>
+	<td class="summary">Get current locale</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.setLocale">i18n.setLocale (locale)</a></td>
+	<td class="summary">Set current locale</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.getFallbackLocale">i18n.getFallbackLocale ()</a></td>
+	<td class="summary">Get fallback locale</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.setFallbackLocale">i18n.setFallbackLocale (locale)</a></td>
+	<td class="summary">Set fallback locale</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.t">i18n.t (key, params, locale)</a></td>
+	<td class="summary">Translate a key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.translate">i18n.translate</a></td>
+	<td class="summary">Alias for t function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.localeExists">i18n.localeExists (locale)</a></td>
+	<td class="summary">Check if locale exists</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.getLocales">i18n.getLocales ()</a></td>
+	<td class="summary">Get list of available locales</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#i18n.getTranslations">i18n.getTranslations (locale)</a></td>
+	<td class="summary">Get all translations for a locale</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_I18nTranslations"></a>Class I18nTranslations </h2>
+
+          <div class="section-description">
+          Storage for all translations
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "i18n.configure"></a>
+    <strong>i18n.configure (options)</strong>
+    </dt>
+    <dd>
+    Configure the i18n library
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+         I18nConfigureOptions Configuration options table
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.load"></a>
+    <strong>i18n.load ()</strong>
+    </dt>
+    <dd>
+    Load all translation files from the translations directory
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.loadFile"></a>
+    <strong>i18n.loadFile (locale, filepath)</strong>
+    </dt>
+    <dd>
+    Load specific translation file
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+        <li><span class="parameter">filepath</span>
+         string Path to translation file
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean success True if file was loaded successfully
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.set"></a>
+    <strong>i18n.set (locale, data)</strong>
+    </dt>
+    <dd>
+    Set translation data directly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+        <li><span class="parameter">data</span>
+         table<string, any> Translation data
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.add"></a>
+    <strong>i18n.add (locale, key, value)</strong>
+    </dt>
+    <dd>
+    Add translation key-value pair
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+        <li><span class="parameter">key</span>
+         string Translation key (supports dot notation)
+        </li>
+        <li><span class="parameter">value</span>
+         string|table<string, any> Translation value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.getLocale"></a>
+    <strong>i18n.getLocale ()</strong>
+    </dt>
+    <dd>
+    Get current locale
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string locale Current locale identifier
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.setLocale"></a>
+    <strong>i18n.setLocale (locale)</strong>
+    </dt>
+    <dd>
+    Set current locale
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.getFallbackLocale"></a>
+    <strong>i18n.getFallbackLocale ()</strong>
+    </dt>
+    <dd>
+    Get fallback locale
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string locale Fallback locale identifier
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.setFallbackLocale"></a>
+    <strong>i18n.setFallbackLocale (locale)</strong>
+    </dt>
+    <dd>
+    Set fallback locale
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.t"></a>
+    <strong>i18n.t (key, params, locale)</strong>
+    </dt>
+    <dd>
+    Translate a key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+         string Translation key (supports dot notation)
+        </li>
+        <li><span class="parameter">params</span>
+         table<string, any>? Parameters for interpolation
+        </li>
+        <li><span class="parameter">locale</span>
+         string? Locale override (uses current locale if not specified)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string translation Translated string or key if translation not found
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.translate"></a>
+    <strong>i18n.translate</strong>
+    </dt>
+    <dd>
+    Alias for t function
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.localeExists"></a>
+    <strong>i18n.localeExists (locale)</strong>
+    </dt>
+    <dd>
+    Check if locale exists
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string Locale identifier
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean exists True if locale has loaded translations
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.getLocales"></a>
+    <strong>i18n.getLocales ()</strong>
+    </dt>
+    <dd>
+    Get list of available locales
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string[] locales Array of available locale identifiers
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "i18n.getTranslations"></a>
+    <strong>i18n.getTranslations (locale)</strong>
+    </dt>
+    <dd>
+    Get all translations for a locale
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">locale</span>
+         string? Locale identifier (uses current locale if not specified)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table<string, any>? translations Translation data for the locale
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2025-07-18 16:55:10 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

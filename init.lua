@@ -23,6 +23,8 @@
 --- @field localeExists fun(locale: string): boolean Check if locale exists
 --- @field getLocales fun(): string[] Get list of available locales
 --- @field getTranslations fun(locale: string?): table<string, any>? Get all translations for a locale
+
+-- Implementation of the i18n library
 local i18n = {}
 
 --- @class I18nConfig
