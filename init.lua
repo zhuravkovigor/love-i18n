@@ -184,7 +184,7 @@ end
 -- Public API
 
 --- Configure the i18n library
---- @param options table Configuration options table with following optional fields:
+--- @param options {localesDir: string?, fallbackLocale: string?, currentLocale: string?, interpolationPattern: string?} Configuration options table with following optional fields:
 ---   • localesDir (string): Directory containing translation files (default: "locales")
 ---   • fallbackLocale (string): Fallback language when translation not found (default: "en")
 ---   • currentLocale (string): Current active language (default: "en")
