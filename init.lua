@@ -374,8 +374,7 @@ function i18n.getTranslations(locale)
 	return translations[locale or config.currentLocale]
 end
 
--- Initialize with default configuration
-i18n.load()
+-- Note: Call i18n.load() manually after configuring to load translations
 
 --- @type I18n
 return i18n
